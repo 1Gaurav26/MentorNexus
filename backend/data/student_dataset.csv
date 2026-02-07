@@ -1,0 +1,29 @@
+student_id,skills,methodologies,academic_level,availability,interests,last_updated
+s-1770493197583,"[""blockchain""]",,Undergraduate,0,blockchain,2026-02-07T19:39:57.901866
+s-1770493215980,"[""blockchain""]",,Undergraduate,0,blockchain,2026-02-07T19:40:15.999562
+s-1770493328338,"[""blockchain""]",,Undergraduate,0,blockchain,2026-02-07T19:42:08.660171
+s-1770493416326,"[""blockchain""]",,Undergraduate,0,blockchain,2026-02-07T19:43:36.634792
+s-1770493424747,"[""blockchain""]",,Undergraduate,0,blockchain,2026-02-07T19:43:44.764837
+s-1770493498039,"[""blockchain""]",,Undergraduate,0,blockchain,2026-02-07T19:44:58.357034
+s-1770493521670,"[""React""]",,Undergraduate,5,NLP,2026-02-07T19:45:21.688394
+s-1770493746698,"[""Python""]",,Undergraduate,0,NLP,2026-02-07T19:49:07.017744
+s-1770493816128,"[""Python""]",,Undergraduate,0,NLP,2026-02-07T19:50:16.448611
+s-1770493919567,"[""python""]",,Undergraduate,5,NLP,2026-02-07T19:51:59.880428
+s-1770493977344,"[""python""]",,Undergraduate,5,NLP,2026-02-07T19:52:57.658941
+s-1770494648704,"[""Python"", ""React""]",,Undergraduate,10,"NLP, AI",2026-02-07T20:04:09.042244
+s-1770495004047,"[""python""]",,Undergraduate,4,NLP,2026-02-07T20:10:04.402994
+s-1770495142033,"[""python""]",,Undergraduate,6,NLP,2026-02-07T20:12:22.377571
+s-1770495212798,"[""python""]",,Undergraduate,3,NLP,2026-02-07T20:13:33.136608
+s-1770495532347,"[""python""]",,Undergraduate,4,NLP,2026-02-07T20:18:52.692560
+s-1770495693046,"[""python""]",,Undergraduate,4,nlp,2026-02-07T20:21:33.380947
+s-1770496462966,"[""python""]",,Undergraduate,5,nlp,2026-02-07T20:34:23.274121
+s-1770497662824,"[""pthon""]",,Undergraduate,4,"nlp
+",2026-02-07T20:54:22.850759
+s-1770497848009,"[""pthon""]",,Undergraduate,5,"nlp
+",2026-02-07T20:57:28.025565
+s-1770498365712,"[""python""]",,Undergraduate,3,nlp,2026-02-07T21:06:06.037284
+s-1770499237663,"[""python""]",,Undergraduate,4,"nlp
+",2026-02-07T21:20:37.994926
+s-1770500221199,"[""python""]",,Undergraduate,5,nlp,2026-02-07T21:37:01.552224
+S-1770500968303,"[""Python""]",,Undergraduate,10,i am interested in NLP,2026-02-07T21:49:28.669752
+s-1770502300128,"[""Python"", ""Java"", ""C++"", ""SQL"", ""PyTorch"", ""TensorFlow"", ""Scikit-learn"", ""Neural Networks"", ""Transformers"", ""Large Language Model APIs"", ""Text Summarization"", ""Chatbots"", ""Pandas"", ""NumPy"", ""Power BI"", ""Tableau"", ""MySQL"", ""PostgreSQL"", ""Hadoop"", ""Docker"", ""Git"", ""Linux"", ""AWS"", ""MATLAB"", ""Unity Engine"", ""Graph Analytics"", ""Deterministic Legal Reasoning"", ""Clinical Entity Extraction"", ""Speech-to-Text Summarization"", ""Text-to-Video Generation"", ""Multimodal Synchronization"", ""CNN"", ""YOLO"", ""Object Detection"", ""Hierarchical Attention Networks"", ""Augmented Reality""]",,Undergraduate,0,"Applied Data Science and AI, focusing heavily on NLP and Generative AI, including Large Language Models (LLMs), advanced multimedia processing (Text-to-Video generation, sports summarization), deep learning for computer vision (CNN, YOLO), and the development of specialized domain intelligence systems such as Deterministic Legal Reasoning and Clinical Speech Intelligence.",2026-02-07T22:11:40.149403

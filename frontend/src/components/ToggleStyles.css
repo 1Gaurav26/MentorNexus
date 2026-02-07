@@ -1,0 +1,80 @@
+/* Toggle Button */
+.toggle-details-btn {
+    background: white;
+    border: 1px solid var(--border);
+    color: var(--primary);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: 0.85rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    text-align: left;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.toggle-details-btn:hover {
+    background: var(--bg-page);
+    border-color: var(--primary);
+}
+
+/* Faculty Details Dropdown */
+.faculty-details {
+    background: var(--bg-page);
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    margin-top: 0.5rem;
+    border: 1px solid var(--border);
+    font-size: 0.9rem;
+    animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.detail-row {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+.project-details-box {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--border);
+}
+
+.project-details-box h5 {
+    margin: 0 0 0.5rem 0;
+    color: var(--secondary);
+}
+
+.status-tag {
+    display: inline-block;
+    background: #e2e8f0;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.related-projects {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--border);
+}
+
+.related-projects ul {
+    padding-left: 1.2rem;
+    margin: 0.5rem 0 0 0;
+}
