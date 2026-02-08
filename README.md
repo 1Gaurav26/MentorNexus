@@ -30,7 +30,7 @@ graph TD
 ## 🚀 Key Features
 
 ### 1. 🧠 AI-Powered Matching
--   **Semantic Analysis**: Uses TF-IDF and Cosine Similarity to match student research interests with faculty publications.
+-   **Semantic Analysis**: Uses TF-IDF with a fallback mechanism of Cosine Similarity to match student research interests with faculty publications.
 -   **Resume Parsing**: Automatically extracts skills and interests from student resumes (PDF) using Google Gemini AI.
 -   **Weighted Scoring**: Matches based on Research Similarity, Skill Overlap, Availability, and Urgency.
 
