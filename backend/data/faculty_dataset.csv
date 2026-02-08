@@ -139,3 +139,6 @@ VIT137,Dr. Shyamapada Nandi,shyamapada.nandi@vit.ac.in,"Hybrid Porous Materials"
 VIT138,Dr. Subhayan Dey,subhayan.dey@vit.ac.in,"Organometallic Chemistry","['Schlenk Line', 'NMR']","Catalytic Screening","Metal-catalyzed Cross Coupling","[{'project_id':'P138','title':'Sustainable Catalysis','status':'open'}]",medium,4,0,phd,18,true,2026-02-07
 VIT139,Dr. Lakkoji Satish,lakkoji.satish@vit.ac.in,"Protein Dynamics, Ionic Liquids","['CD Spectroscopy', 'MD']","Biophysical Characterization","Protein Stability in Ionic Liquids","[{'project_id':'P139','title':'Bio-nanoconjugates for Delivery','status':'open'}]",low,3,1,phd,12,true,2026-02-08
 VIT140,Dr. Saheli Karmakar,saheli.karmakar@vit.ac.in,"Phosphorescence Materials","['Luminescence', 'TADF']","Photophysics","Materials for Multi-Disciplinary Apps","[{'project_id':'P140','title':'Bio-imaging Phosphors','status':'open'}]",medium,5,2,phd,10,true,2026-02-08
+
+VIT141,Dr. Demo Faculty,demo.faculty@vit.ac.in,"Artificial Intelligence, Machine Learning","['Python', 'TensorFlow', 'PyTorch']","Deep Learning","Advanced AI Systems","[{'project_id':'P141','title':'Generative AI Models','status':'open'}]",high,5,1,phd,10,true,2026-02-08
+

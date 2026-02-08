@@ -1,0 +1,5 @@
+request_id,student_id,student_name,faculty_id,faculty_name,message,status,created_at,note
+d33aae57-02a7-4532-b0b4-33372f0fcf4d,s-demo,Demo Student,VIT141,Faculty ID: VIT141,hi sir,accepted,2026-02-08T05:46:59.379522,
+046c4144-c5c7-4a08-8441-4457de612f2c,s-demo,Demo Student,VIT141,Faculty ID: VIT141,hello,accepted,2026-02-08T05:53:10.542837,
+b080f0e8-8792-44fc-a3a3-66408625dac8,s-demo,Demo Student,VIT141,Faculty ID: VIT141,cv,accepted,2026-02-08T06:40:55.259146,
+38837196-301d-46a3-8fa2-b41a2f4a1dc5,s-demo,Demo Student,VIT141,Faculty ID: VIT141,ram,declined,2026-02-08T07:01:07.840024,you suck

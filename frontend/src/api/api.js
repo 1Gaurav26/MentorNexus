@@ -27,4 +27,60 @@ export async function getAnalytics() {
   return client.get('/analytics').then(r => r.data)
 }
 
-export default { searchFaculty, researchMatch, fullMatch, upsertStudent, upsertFaculty, getAnalytics }
+export async function getStudent(id) {
+  return client.get(`/student/${id}`).then(r => r.data)
+}
+
+export async function sendMentorshipRequest(data) {
+  return client.post('/mentorship/request', data).then(r => r.data)
+}
+
+export async function getStudentRequests(id) {
+  return client.get(`/mentorship/student/${id}`).then(r => r.data)
+}
+
+export async function getFacultyRequests(id) {
+  return client.get(`/mentorship/faculty/${id}`).then(r => r.data)
+}
+
+export async function updateRequestStatus(requestId, status, note = null) {
+  return client.patch('/mentorship/status', { request_id: requestId, status, note }).then(r => r.data)
+}
+
+export async function searchStudents(q) {
+  return client.get(`/search/student?q=${q}`).then(r => r.data)
+}
+
+export default {
+  searchFaculty,
+  researchMatch,
+  fullMatch,
+  upsertStudent,
+  upsertFaculty,
+  getAnalytics,
+  getStudent,
+  sendMentorshipRequest,
+  getStudentRequests,
+  getFacultyRequests,
+  updateRequestStatus,
+  searchStudents
+}
+// Faculty management
+export const getFaculty = async (facultyId) => {
+  try {
+    const res = await client.get(`/faculty/profile/${facultyId}`)
+    return res.data
+  } catch (err) {
+    console.error("Fetch faculty error", err)
+    throw err
+  }
+}
+
+export const updateFacultyProfile = async (data) => {
+  try {
+    const res = await client.post('/faculty/update', data)
+    return res.data
+  } catch (err) {
+    throw err
+  }
+}

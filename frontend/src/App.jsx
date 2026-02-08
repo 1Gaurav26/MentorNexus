@@ -1,49 +1,59 @@
-import React, { useState } from 'react'
-import Onboarding from './pages/Onboarding'
-import Search from './pages/Search'
+import React from 'react'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import Login from './pages/Login'
+import Register from './pages/Register'
+import StudentDashboard from './pages/StudentDashboard'
+import FacultyDashboard from './pages/FacultyDashboard'
+import ProtectedRoute from './components/ProtectedRoute'
+import Onboarding from './pages/Onboarding' // Keep for migration reference/reuse if needed
 import MatchResults from './pages/MatchResults'
-import AdminDataEntry from './pages/AdminDataEntry'
-import AnalyticsDashboard from './pages/AnalyticsDashboard'
+import Search from './pages/Search'
+import FacultyProfile from './pages/FacultyProfile'
+import StudentProfile from './pages/StudentProfile'
+import RequestMentorship from './pages/RequestMentorship'
+import StudentRequests from './pages/StudentRequests'
+import StudentSearch from './pages/StudentSearch'
+import StudentPublicProfile from './pages/StudentPublicProfile'
+import FacultyEditProfile from './pages/FacultyEditProfile'
+import FacultyPublications from './pages/FacultyPublications'
+import Landing from './pages/Landing' // New Landing page? Or just redirect to login
 
-export default function App() {
-  const [view, setView] = useState('onboard')
-  const [lastResults, setLastResults] = useState([])
-
+function App() {
   return (
-    <div className="app">
-      <header>
-        <h1>MentorNexus</h1>
-        <nav>
-          <button onClick={() => setView('onboard')}>Student Onboarding</button>
-          <button onClick={() => setView('search')}>Search Faculty</button>
-          <button onClick={() => setView('results')}>Last Results</button>
-          <button onClick={() => setView('analytics')}>Analytics</button>
-          <button onClick={() => setView('admin')}>Contribute Data</button>
-        </nav>
-      </header>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
 
-      <main>
-        {view === 'onboard' && (
-          <Onboarding onShowResults={(res) => { setLastResults(res); setView('results') }} />
-        )}
+        <Route path="/" element={<Landing />} />
 
-        {view === 'search' && (
-          <Search onShowResults={(res) => { setLastResults(res); setView('results') }} />
-        )}
+        {/* Protected Routes */}
+        <Route element={<ProtectedRoute allowedRoles={['student']} />}>
+          <Route path="/student/dashboard" element={<StudentDashboard />} />
+          <Route path="/onboarding" element={<Onboarding />} />
+          <Route path="/match" element={<MatchResults />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/faculty/:id" element={<FacultyProfile />} />
+          <Route path="/student/profile" element={<StudentProfile />} />
+          <Route path="/student/requests" element={<StudentRequests />} />
+          <Route path="/student/request-mentorship/:facultyId" element={<RequestMentorship />} />
+        </Route>
 
-        {view === 'results' && (
-          <MatchResults results={lastResults} />
-        )}
+        <Route element={<ProtectedRoute allowedRoles={['faculty']} />}>
+          <Route path="/faculty/dashboard" element={<FacultyDashboard />} />
+          <Route path="/faculty/search-students" element={<StudentSearch />} />
+          <Route path="/faculty/student/:id" element={<StudentPublicProfile />} />
+          <Route path="/faculty/edit-profile" element={<FacultyEditProfile />} />
+          <Route path="/faculty/publications" element={<FacultyPublications />} />
+          {/* Add more faculty routes here */}
+        </Route>
 
-        {view === 'admin' && (
-          <AdminDataEntry />
-        )}
-
-        {view === 'analytics' && (
-          <AnalyticsDashboard />
-        )}
-      </main>
-
-    </div>
+        {/* Redirect unknown routes to home */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
+
+export default App
+

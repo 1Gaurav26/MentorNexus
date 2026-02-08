@@ -17,11 +17,12 @@ from backend.app.blockchain_service import commit_match
 from backend.app.resume_parser import parse_resume_with_ai
 from backend.app.chat import manager as chat_manager
 from fastapi import UploadFile, File, WebSocket, WebSocketDisconnect
+from backend.app import scheduler, auth
 from dotenv import load_dotenv
 
 load_dotenv()
 
-app = FastAPI(title="MentorNexus")
+app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
@@ -30,6 +31,10 @@ app.add_middleware(
     allow_methods=["*"],  # Allows all methods
     allow_headers=["*"],  # Allows all headers
 )
+
+# --- Routers ---
+app.include_router(scheduler.router)
+app.include_router(auth.router)
 
 FACULTY_DATA_PATH = "backend/data/faculty_dataset.csv"
 
@@ -159,10 +164,40 @@ def add_or_update_student(student: StudentUpsert):
     return {"status": "student added/updated"}
 
 
+@app.get("/student/{id}")
+def get_student_profile(id: str):
+    from backend.app.student_service import get_student
+    student = get_student(id)
+    if not student:
+        raise HTTPException(status_code=404, detail="Student not found")
+    return student
+
+
+@app.get("/faculty/profile/{faculty_id}")
+def get_faculty_profile(faculty_id: str):
+    from backend.app.faculty_service import get_faculty
+    faculty = get_faculty(faculty_id)
+    if not faculty:
+        raise HTTPException(status_code=404, detail="Faculty not found")
+    return faculty
+
+
+@app.post("/faculty/update")
+def update_faculty_profile(data: dict):
+    upsert_faculty(data)
+    return {"status": "updated"}
+
+
 # ---------- FACULTY SEARCH ----------
 @app.get("/search/faculty")
 def faculty_search(q: str):
     return search_faculty(faculty_records, q)
+
+
+@app.get("/search/student")
+def student_search(q: str):
+    from backend.app.student_service import search_students
+    return search_students(q)
 
 
 # ---------- UTILITIES ----------
@@ -258,9 +293,52 @@ def get_analytics():
             "demand_supply": {"students": 0, "capacity": 0}
         }
 
+# ---------- MENTORSHIP WORKFLOW ----------
+from backend.app.schemas import MentorshipRequest, MentorshipStatusUpdate
+from backend.app.mentorship_service import create_request, get_requests_for_student, get_requests_for_faculty, update_request_status
+
+@app.post("/mentorship/request")
+def send_mentorship_request(req: MentorshipRequest):
+    return create_request(req.dict())
+
+@app.get("/mentorship/student/{id}")
+def get_student_requests(id: str):
+    return get_requests_for_student(id)
+
+@app.get("/mentorship/faculty/{id}")
+def get_faculty_requests(id: str):
+    return get_requests_for_faculty(id)
+
+@app.patch("/mentorship/status")
+def update_status(update: MentorshipStatusUpdate):
+    success = update_request_status(update.request_id, update.status, update.note)
+    if not success:
+        raise HTTPException(status_code=404, detail="Request not found")
+    return {"status": "updated"}
+
 from backend.app.scheduler import router as scheduler_router
 app.include_router(scheduler_router, prefix="/schedule", tags=["Scheduling"])
 
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
+
+# Trigger Reload
+
+# Trigger Reload
+
+# Trigger Reload via student_service fix
+
+# Trigger API Update
+
+# Trigger API Update for mentorship fix
+
+# Trigger API Update for projects parsing
+
+# Trigger API Update for rejection notes
+
+# Trigger API Update for syntax fix
+
+# Trigger API Update for mentorship fix 2
+
+# Trigger API Update for mentorship fix 3

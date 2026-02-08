@@ -57,3 +57,18 @@ class FacultyProject(BaseModel):
     status: Literal["open", "full"]
     is_visible: bool
     last_updated: str
+
+class MentorshipRequest(BaseModel):
+    request_id: Optional[str] = None
+    student_id: str
+    student_name: str
+    faculty_id: str
+    faculty_name: str
+    message: str
+    status: Literal["pending", "accepted", "declined"] = "pending"
+    created_at: Optional[str] = None
+
+class MentorshipStatusUpdate(BaseModel):
+    request_id: str
+    status: Literal["pending", "accepted", "declined"]
+    note: Optional[str] = None

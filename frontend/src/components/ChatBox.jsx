@@ -9,7 +9,11 @@ export default function ChatBox({ userId, recipientName, onClose }) {
 
     useEffect(() => {
         // Create WebSocket connection
-        const ws = new WebSocket(`ws://localhost:8000/ws/${userId}`);
+        const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+        const wsProtocol = apiBase.startsWith('https') ? 'wss' : 'ws';
+        const wsUrl = apiBase.replace(/^https?/, wsProtocol);
+
+        const ws = new WebSocket(`${wsUrl}/ws/${userId}`);
 
         ws.onopen = () => {
             setStatus('Connected');

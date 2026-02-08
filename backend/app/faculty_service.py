@@ -22,8 +22,10 @@ def save_df(df):
 def upsert_faculty(data: dict):
     df = load_df()
 
-    data["required_skills"] = json.dumps(data["required_skills"])
-    data["methodologies"] = ",".join(data["methodologies"])
+    if "required_skills" in data:
+        data["required_skills"] = json.dumps(data["required_skills"])
+    if "methodologies" in data:
+        data["methodologies"] = ",".join(data["methodologies"])
     data["last_updated"] = datetime.utcnow().isoformat()
 
     if "projects" not in df.columns:
@@ -78,4 +80,32 @@ def add_project_to_faculty(faculty_id: str, project_data: dict):
 
 
 def list_faculty():
-    return load_df().to_dict(orient="records")
+    df = load_df()
+    return df.where(pd.notnull(df), None).to_dict(orient="records")
+
+
+def get_faculty(faculty_id: str):
+    df = load_df()
+    faculty = df[df["faculty_id"] == faculty_id]
+    if faculty.empty:
+        return None
+    
+    # Robust NaN handling
+    faculty = faculty.where(pd.notnull(faculty), None)
+    res = faculty.iloc[0].to_dict()
+    
+    # helper to clean list/json fields
+    def clean_list(val):
+        if not val: return []
+        if isinstance(val, str) and val.startswith("["):
+            try: return json.loads(val)
+            except: pass
+        if isinstance(val, str):
+            return [x.strip() for x in val.split(',') if x.strip()]
+        return val
+
+    # Clean known list fields
+    res["required_skills"] = clean_list(res.get("required_skills"))
+    res["projects"] = clean_list(res.get("projects"))
+    
+    return res
